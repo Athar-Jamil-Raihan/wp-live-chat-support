@@ -138,7 +138,7 @@ function wplc_loop_response_handler(response){
             }
             new_length = jQuery("#admin_chat_box_area_" + cid).html().length;
             if (current_len < new_length) {
-                if (typeof wplc_enable_ding !== 'undefined' && wplc_enable_ding === "1") {
+                if (typeof wplc_enable_ding !== 'undefined' && wplc_enable_ding === "1" && ! (/User is browsing <small/.test(response['chat_message']))) {
                     new Audio(wplc_ding_file).play()
                 }
             }
@@ -339,8 +339,12 @@ jQuery(document).ready(function () {
 
         if(typeof wplc_name_override  !== "undefined" && wplc_name_override !== ""){
             wplc_name = "<strong>"+wplc_name_override+": </strong>";
-        } else if( typeof wplc_show_chat_detail.name !== 'undefined' ) {
-            wplc_name = "<strong>"+wplc_show_chat_detail.name+": </strong>";
+        } else if( typeof wplc_show_chat_detail.name !== 'undefined') {
+            if(wplc_show_chat_detail.name !== ''){
+                wplc_name = "<strong>"+wplc_show_chat_detail.name+": </strong>";
+            } else {
+                wplc_name = "";
+            }
         } else {
             wplc_name = wplc_name;
         }
@@ -480,7 +484,7 @@ function niftyShareFile(fileToUpload, failedID, successID, uploadingID, original
                             var tag = (data.indexOf(".png") !== -1 || data.indexOf(".PNG") !== -1 || data.indexOf(".jpg") !== -1  || data.indexOf(".JPG") !== -1 || data.indexOf(".jpeg") !== -1 || data.indexOf(".gif") !== -1 || data.indexOf(".bmp")!== -1 ) ? "img" : "link";
                            
                             if(tag !== "img"){
-                                tag = (data.indexOf(".mp4") !== -1 || data.indexOf(".mpeg4") !== -1 || data.indexOf(".webm") !== -1 || data.indexOf(".oog") !== -1 ) ? "vid" : "link"; //video now
+                                tag = (data.indexOf(".mp4") !== -1 || data.indexOf(".mpeg4") !== -1 || data.indexOf(".webm") !== -1 || data.indexOf(".oog") !== -1 ) ? "video" : "link"; //video now
                             }
                             jQuery("#wplc_admin_chatmsg").val(tag + ":" + data + ":" + tag); //Add to input field
                             jQuery("#wplc_admin_send_msg").trigger("click"); //Send message

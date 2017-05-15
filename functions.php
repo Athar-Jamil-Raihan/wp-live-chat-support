@@ -443,7 +443,7 @@ function wplc_filter_control_list_chats_actions($actions,$result,$post_data) {
             $url = admin_url( 'admin.php?page=wplivechat-menu'.$url_params);
             $actions = "<a href=\"".$url."\" class=\"wplc_open_chat button button-primary\" window-title=\"WP_Live_Chat_".$result->id."\">". apply_filters("wplc_accept_chat_button_filter", __("Accept Chat","wplivechat"), $result->id)."</a>";
         }
-        else if (intval($result->status) == 3) {
+        else if (intval($result->status) == 3 || intval($result->status) == 10) {
             $url_params = "&action=ac&cid=".$result->id.$aid;
             $url = admin_url( 'admin.php?page=wplivechat-menu'.$url_params);
 	        if ( ! function_exists("wplc_pro_version_control") || !isset( $result->agent_id ) || $wplc_current_user == $result->agent_id ) { //Added backwards compat checks
@@ -457,7 +457,7 @@ function wplc_filter_control_list_chats_actions($actions,$result,$post_data) {
             $url = admin_url( 'admin.php?page=wplivechat-menu'.$url_params);
             $actions = "<a href=\"".$url."\" class=\"wplc_open_chat button button-primary\" window-title=\"WP_Live_Chat_".$result->id."\">".__("Accept Chat","wplivechat")."</a>";
         }
-        else if (intval($result->status) == 12) {
+        else if (intval($result->status) == 12 ) {
             $url_params = "&action=ac&cid=".$result->id.$aid;
             $url = admin_url( 'admin.php?page=wplivechat-menu'.$url_params);
             $actions = "<a href=\"".$url."\" class=\"wplc_open_chat button button-primary\" window-title=\"WP_Live_Chat_".$result->id."\">".__("Open Chat","wplivechat")."</a>";
@@ -1487,7 +1487,6 @@ function wplc_user_initiate_chat($name,$email,$cid = null,$session) {
 
     global $wpdb;
     global $wplc_tblname_chats;
-    do_action("wplc_hook_initiate_chat",array("cid" => $cid, "name" => $name, "email" => $email));
   
 
     $wplc_settings = get_option('WPLC_SETTINGS');
@@ -1572,6 +1571,7 @@ function wplc_user_initiate_chat($name,$email,$cid = null,$session) {
             ), 
             array('%d') 
         );
+        do_action("wplc_hook_initiate_chat",array("cid" => $cid, "name" => $name, "email" => $email));
 
         do_action("wplc_start_chat_hook_after_data_insert", $cid);
         return $cid;
@@ -1920,7 +1920,8 @@ function wplc_admin_display_missed_chats() {
             WHERE (`status` = 7 
             OR `agent_id` = 0)
             AND `email` != 'no email set'                     
-            ORDER BY `timestamp` DESC
+            AND `email` NOT REGEXP '^[0-9]{6}@[0-9]{6}\.com$'                     
+ORDER BY `timestamp` DESC
                 ";
     } else {
         $sql = "
@@ -1928,6 +1929,7 @@ function wplc_admin_display_missed_chats() {
             FROM $wplc_tblname_chats
             WHERE `status` = 7             
             AND `email` != 'no email set'                     
+            AND `email` NOT REGEXP '^[0-9]{6}@[0-9]{6}\.com$'                     
             ORDER BY `timestamp` DESC
                 ";
     }

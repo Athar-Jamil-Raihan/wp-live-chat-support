@@ -3,7 +3,7 @@
   Plugin Name: WP Live Chat Support
   Plugin URI: http://www.wp-livechat.com
   Description: The easiest to use website live chat plugin. Let your visitors chat with you and increase sales conversion rates with WP Live Chat Support. No third party connection required!
-  Version: 7.0.06
+  Version: 7.0.07
   Author: WP-LiveChat
   Author URI: http://www.wp-livechat.com
   Text Domain: wplivechat
@@ -11,6 +11,18 @@
  */
  
 /**
+ * 7.0.07 - 2017-05-15 - Medium priority
+ * You can now change the text of the offline message button
+ * You can now change the text of the close chat button
+ * Added ability to set a default visitor name
+ * Added ability to choose which user fields are required (name, email or both)
+ * Added visual aid when new message is sent and chat is minimized
+ * Fixed a bug that caused the user can't send a message when an agent initiate chat
+ * Fixed a bug that caused The Chrome icon was displayed in the admin when user using Internet Explorer
+ * Fixed a bug that caused empty button without remove/delete icon in Missed Chats
+ * Fixed a bug that caused attached image wasn't display correctly in chat box
+ * Added ability to exclude pages with custom post types
+ * 
  * 7.0.06 -2017-03-13 - Low Priority
  * Enhancement: 'Open Chat' button changes to 'Chat Accepted' once a chat is active
  * Bug Fix: Compatibility bug fix for decryption in the Pro version
@@ -3343,25 +3355,26 @@ function wplc_add_user_stylesheet() {
  * @return void
  */
 function wplc_add_admin_stylesheet() {
+	global $wplc_version;
     if (isset($_GET['page']) && ($_GET['page'] == 'wplivechat-menu' ||  $_GET['page'] == 'wplivechat-menu-api-keys-page' ||  $_GET['page'] == 'wplivechat-menu-extensions-page' || $_GET['page'] == 'wplivechat-menu-settings' || $_GET['page'] == 'wplivechat-menu-offline-messages' || $_GET['page'] == 'wplivechat-menu-history' || $_GET['page'] == 'wplivechat-menu-missed-chats')) {
-        wp_register_style('wplc-admin-style', plugins_url('/css/jquery-ui.css', __FILE__));
-        wp_enqueue_style('wplc-admin-style');
-        wp_register_style('wplc-chat-style', plugins_url('/css/chat-style.css', __FILE__));
-        wp_enqueue_style('wplc-chat-style');
-        wp_register_style('wplc-font-awesome', plugins_url('/css/font-awesome.min.css', __FILE__));
-        wp_enqueue_style('wplc-font-awesome');
-        wp_enqueue_script('jquery-ui-core');
-        wp_enqueue_script('jquery-effects-core');
+        wp_register_style( 'wplc-admin-style', plugins_url( '/css/jquery-ui.css', __FILE__ ), false, $wplc_version );
+        wp_enqueue_style( 'wplc-admin-style' );
+        wp_register_style( 'wplc-chat-style', plugins_url( '/css/chat-style.css', __FILE__ ), false, $wplc_version );
+        wp_enqueue_style( 'wplc-chat-style' );
+        wp_register_style( 'wplc-font-awesome', plugins_url( '/css/font-awesome.min.css', __FILE__ ), false, $wplc_version );
+        wp_enqueue_style( 'wplc-font-awesome' );
+        wp_enqueue_script( 'jquery-ui-core' );
+        wp_enqueue_script( 'jquery-effects-core' );
     }
     if (isset($_GET['page']) && $_GET['page'] == 'wplivechat-menu' && isset($_GET['action']) && $_GET['action'] == "ac") {
-        wp_register_style('wplc-admin-chat-box-style', plugins_url('/css/admin-chat-box-style.css', __FILE__));
+        wp_register_style('wplc-admin-chat-box-style', plugins_url('/css/admin-chat-box-style.css', __FILE__ ), false, $wplc_version );
         wp_enqueue_style('wplc-admin-chat-box-style');
 
     }
     if (isset($_GET['page']) && $_GET['page'] == "wplivechat-menu-support-page") {
-        wp_register_style('fontawesome', plugins_url('css/font-awesome.min.css', __FILE__));
+        wp_register_style('fontawesome', plugins_url('css/font-awesome.min.css', __FILE__ ), false, $wplc_version );
         wp_enqueue_style('fontawesome');
-        wp_register_style('wplc-support-page-css', plugins_url('css/support-css.css', __FILE__));
+        wp_register_style('wplc-support-page-css', plugins_url('css/support-css.css', __FILE__ ), false, $wplc_version );
         wp_enqueue_style('wplc-support-page-css');
     }
 }
@@ -5386,4 +5399,27 @@ function wplc_basic_version_departments(){
   	$content .= 	"</table>";
 
   	echo $content;
+}
+
+add_filter( 'wplc_filter_active_chat_box_notification', 'wplc_active_chat_box_notice' );
+
+if ( ! function_exists( "wplc_active_chat_box_notices" ) ) {
+	add_action( "wplc_hook_chat_dashboard_above", "wplc_active_chat_box_notices" );
+	function wplc_active_chat_box_notices() {
+		$wplc_settings   = get_option( "WPLC_SETTINGS" );
+		if ( $wplc_settings["wplc_settings_enabled"] == 2 ) { ?>
+            <div class="wplc-chat-box-notification wplc-chat-box-notification--disabled">
+                <p><?php echo sprintf( __( 'The Live Chat box is currently disabled on your website due to : <a href="%s">General Settings</a>', 'wp-livechat' ), admin_url( 'admin.php?page=wplivechat-menu-settings#tabs-1' ) ) ?></p>
+            </div>
+			<?php
+		} else {
+			//$notice = '<div class="wplc-chat-box-notification">';
+			//$notice .= '<p>' . __( 'The Live Chat box is currently active', 'wp-livechat' ) . '</p>';
+			//$notice .= '</div>';
+			$notice = '';
+			$notice = apply_filters( 'wplc_filter_active_chat_box_notice', $notice );
+			echo $notice;
+		}
+
+	}
 }

@@ -3,7 +3,7 @@ Contributors: WP-LiveChat, NickDuncan, CodeCabin_, Jarryd Long, dylanauty
 Donate link: http://www.wp-livechat.com
 Tags: live chat, live support, chat plugin, live help, wordpress live chat, chat, live chat plugin, live support plugin, live chat support plugin, chat plugin, support plugin, live help
 Requires at least: 3.8
-Tested up to: 4.7
+Tested up to: 4.7.3
 Stable tag: trunk
 License: GPLv2
 
@@ -219,6 +219,13 @@ It is highly recommended that you upgrade to WP Live Chat Support version 6.0.02
 It is highly recommended that you upgrade to WP Live Chat Support version 4.4.0 for security reasons.
 
 == Changelog ==
+
+= 7.0.06 -2017-03-13 - Low Priority =
+* Enhancement: 'Open Chat' button changes to 'Chat Accepted' once a chat is active
+* Bug Fix: Compatibility bug fix for decryption in the Pro version
+
+= 7.0.05 - 2017-03-01 - Low priority =
+* Fixed broken links on the plugins page 
 
 = 7.0.04 - 2017-02-15 =
 * Fixed a bug that caused messages to be returned encoded after refreshing the page
