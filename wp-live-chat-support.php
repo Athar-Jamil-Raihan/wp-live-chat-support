@@ -5387,3 +5387,25 @@ function wplc_basic_version_departments(){
 
   	echo $content;
 }
+
+add_filter( 'wplc_filter_active_chat_box_notification', 'wplc_active_chat_box_notice' );
+
+if ( ! function_exists( "wplc_active_chat_box_notices" ) ) {
+	add_action( "wplc_hook_chat_dashboard_above", "wplc_active_chat_box_notices" );
+	function wplc_active_chat_box_notices() {
+		$wplc_settings   = get_option( "WPLC_SETTINGS" );
+		if ( $wplc_settings["wplc_settings_enabled"] == 2 ) { ?>
+            <div class="wplc-chat-box-notification wplc-chat-box-notification--disabled">
+                <p><?php _e( 'Live Chat box is disabled due to : general settings', 'wp-livechat' ); ?></p>
+            </div>
+			<?php
+		} else {
+			$notice = '<div class="wplc-chat-box-notification">';
+			$notice .= '<p>' . __( 'Live Chat box is active', 'wp-livechat' ) . '</p>';
+			$notice .= '</div>';
+			$notice = apply_filters( 'wplc_filter_active_chat_box_notice', $notice );
+			echo $notice;
+		}
+
+	}
+}

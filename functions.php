@@ -1920,7 +1920,8 @@ function wplc_admin_display_missed_chats() {
             WHERE (`status` = 7 
             OR `agent_id` = 0)
             AND `email` != 'no email set'                     
-            ORDER BY `timestamp` DESC
+            AND `email` NOT REGEXP '^[0-9]{6}@[0-9]{6}\.com$'                     
+ORDER BY `timestamp` DESC
                 ";
     } else {
         $sql = "
@@ -1928,6 +1929,7 @@ function wplc_admin_display_missed_chats() {
             FROM $wplc_tblname_chats
             WHERE `status` = 7             
             AND `email` != 'no email set'                     
+            AND `email` NOT REGEXP '^[0-9]{6}@[0-9]{6}\.com$'                     
             ORDER BY `timestamp` DESC
                 ";
     }

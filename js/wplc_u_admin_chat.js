@@ -138,7 +138,7 @@ function wplc_loop_response_handler(response){
             }
             new_length = jQuery("#admin_chat_box_area_" + cid).html().length;
             if (current_len < new_length) {
-                if (typeof wplc_enable_ding !== 'undefined' && wplc_enable_ding === "1") {
+                if (typeof wplc_enable_ding !== 'undefined' && wplc_enable_ding === "1" && ! (/User is browsing <small/.test(response['chat_message']))) {
                     new Audio(wplc_ding_file).play()
                 }
             }
