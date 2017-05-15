@@ -139,7 +139,7 @@ function wplc_loop_response_handler(response){
             new_length = jQuery("#admin_chat_box_area_" + cid).html().length;
             if (current_len < new_length) {
                 if (typeof wplc_enable_ding !== 'undefined' && wplc_enable_ding === "1") {
-                    new Audio(wplc_ding_file).play()                               
+                    new Audio(wplc_ding_file).play()
                 }
             }
             var height = jQuery('#admin_chat_box_area_' + cid)[0].scrollHeight;
@@ -336,8 +336,8 @@ jQuery(document).ready(function () {
         var wplc_cid = jQuery("#wplc_admin_cid").val();
         var wplc_chat = wplc_strip(document.getElementById('wplc_admin_chatmsg').value);
         var wplc_name = "a" + "d" + "m" + "i" + "n";
-        
-        if(typeof wplc_name_override  !== "undefined"){
+
+        if(typeof wplc_name_override  !== "undefined" && wplc_name_override !== ""){
             wplc_name = "<strong>"+wplc_name_override+": </strong>";
         } else if( typeof wplc_show_chat_detail.name !== 'undefined' ) {
             wplc_name = "<strong>"+wplc_show_chat_detail.name+": </strong>";

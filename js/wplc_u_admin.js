@@ -430,6 +430,22 @@ jQuery(document).ready(function () {
        
     });
 
+    var visitorNameRow = jQuery('.wplc-user-default-visitor-name__row'),
+        requireUserInfo = jQuery('input[name=wplc_require_user_info]:checked').val();
+    if ( '0' === requireUserInfo || 'email' === requireUserInfo ) {
+        visitorNameRow.show();
+    } else {
+        visitorNameRow.hide();
+    }
+
+    jQuery('body').on("click", "input[name=wplc_require_user_info]", function (event) {
+        if ( '0' === jQuery(this).val() || 'email' === jQuery(this).val() ) {
+            visitorNameRow.show();
+        } else {
+            visitorNameRow.hide();
+        }
+    });
+
     if (typeof wplc_choose_accept_chats !== "undefined" && wplc_choose_accept_chats === "0" ) {
         /* do nothing as they do not want to accept chats - kill the whole system! */
         jQuery("#wplc_admin_chat_area_new").html("<div class='wplc_chat_area_temp'>"+ " " + wplc_localized_quote_string+"</div>");

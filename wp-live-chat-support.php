@@ -634,22 +634,25 @@ function wplc_version_control() {
         $wplc_settings = get_option("WPLC_SETTINGS");
 
 
-        if (!isset($wplc_settings['wplc_pro_na']) || (isset($wplc_settings['wplc_pro_na']) && $wplc_settings['wplc_pro_na'] == "")) { $wplc_settings["wplc_pro_na"] = __("Chat offline. Leave a message", "wplivechat"); }
-        if (!isset($wplc_settings['wplc_pro_intro']) || (isset($wplc_settings['wplc_pro_intro']) && $wplc_settings['wplc_pro_intro'] == "")) { $wplc_settings["wplc_pro_intro"] = __("Hello. Please input your details so that I may help you.", "wplivechat"); }
-        if (!isset($wplc_settings['wplc_pro_offline1']) || (isset($wplc_settings['wplc_pro_offline1']) && $wplc_settings['wplc_pro_offline1'] == "")) { $wplc_settings["wplc_pro_offline1"] = __("We are currently offline. Please leave a message and we'll get back to you shortly.", "wplivechat"); }
-        if (!isset($wplc_settings['wplc_pro_offline2']) || (isset($wplc_settings['wplc_pro_offline2']) && $wplc_settings['wplc_pro_offline2'] == "")) { $wplc_settings["wplc_pro_offline2"] =  __("Sending message...", "wplivechat"); }
-        if (!isset($wplc_settings['wplc_pro_offline3']) || (isset($wplc_settings['wplc_pro_offline3']) && $wplc_settings['wplc_pro_offline3'] == "")) { $wplc_settings["wplc_pro_offline3"] = __("Thank you for your message. We will be in contact soon.", "wplivechat"); }
-        if (!isset($wplc_settings['wplc_pro_fst1']) || (isset($wplc_settings['wplc_pro_fst1']) && $wplc_settings['wplc_pro_fst1'] == "")) { $wplc_settings["wplc_pro_fst1"] = __("Questions?", "wplivechat"); }
-        if (!isset($wplc_settings['wplc_pro_fst2']) || (isset($wplc_settings['wplc_pro_fst2']) && $wplc_settings['wplc_pro_fst2'] == "")) { $wplc_settings["wplc_pro_fst2"] = __("Chat with us", "wplivechat"); }
-        if (!isset($wplc_settings['wplc_pro_fst3']) || (isset($wplc_settings['wplc_pro_fst3']) && $wplc_settings['wplc_pro_fst3'] == "")) { $wplc_settings["wplc_pro_fst3"] = __("Start live chat", "wplivechat"); }
-        if (!isset($wplc_settings['wplc_pro_sst1']) || (isset($wplc_settings['wplc_pro_sst1']) && $wplc_settings['wplc_pro_sst1'] == "")) { $wplc_settings["wplc_pro_sst1"] = __("Start Chat", "wplivechat"); }
-        if (!isset($wplc_settings['wplc_pro_sst1_survey']) || (isset($wplc_settings['wplc_pro_sst1_survey']) && $wplc_settings['wplc_pro_sst1_survey'] == "")) { $wplc_settings["wplc_pro_sst1_survey"] = __("Or chat to an agent now", "wplivechat"); }
-        if (!isset($wplc_settings['wplc_pro_sst1e_survey']) || (isset($wplc_settings['wplc_pro_sst1e_survey']) && $wplc_settings['wplc_pro_sst1e_survey'] == "")) { $wplc_settings["wplc_pro_sst1e_survey"] = __("Chat ended", "wplivechat"); }
-        if (!isset($wplc_settings['wplc_pro_sst2']) || (isset($wplc_settings['wplc_pro_sst2']) && $wplc_settings['wplc_pro_sst2'] == "")) { $wplc_settings["wplc_pro_sst2"] = __("Connecting. Please be patient...", "wplivechat"); }
-        if (!isset($wplc_settings['wplc_pro_tst1']) || (isset($wplc_settings['wplc_pro_tst1']) && $wplc_settings['wplc_pro_tst1'] == "")) { $wplc_settings["wplc_pro_tst1"] = __("Reactivating your previous chat...", "wplivechat"); }
-        if (!isset($wplc_settings['wplc_user_welcome_chat']) || (isset($wplc_settings['wplc_user_welcome_chat']) && $wplc_settings['wplc_user_welcome_chat'] == "")) { $wplc_settings["wplc_user_welcome_chat"] = __("Welcome. How may I help you?", "wplivechat"); }
-        if (!isset($wplc_settings['wplc_welcome_msg']) || (isset($wplc_settings['wplc_welcome_msg']) && $wplc_settings['wplc_welcome_msg'] == "")) { $wplc_settings['wplc_welcome_msg'] = __("Please standby for an agent. While you wait for the agent you may type your message.","wplivechat"); }
-        if (!isset($wplc_settings['wplc_user_enter']) || (isset($wplc_settings['wplc_user_enter']) && $wplc_settings['wplc_user_enter'] == "")) { $wplc_settings["wplc_user_enter"] = __("Press ENTER to send your message", "wplivechat"); }
+	    if (!isset($wplc_settings['wplc_pro_na'])) { $wplc_settings["wplc_pro_na"] = __("Chat offline. Leave a message", "wplivechat"); }
+	    if (!isset($wplc_settings['wplc_pro_intro'])) { $wplc_settings["wplc_pro_intro"] = __("Hello. Please input your details so that I may help you.", "wplivechat"); }
+	    if (!isset($wplc_settings['wplc_pro_offline1'])) { $wplc_settings["wplc_pro_offline1"] = __("We are currently offline. Please leave a message and we'll get back to you shortly.", "wplivechat"); }
+	    if (!isset($wplc_settings['wplc_pro_offline2'])) { $wplc_settings["wplc_pro_offline2"] =  __("Sending message...", "wplivechat"); }
+	    if (!isset($wplc_settings['wplc_pro_offline3'])) { $wplc_settings["wplc_pro_offline3"] = __("Thank you for your message. We will be in contact soon.", "wplivechat"); }
+	    if (!isset($wplc_settings['wplc_pro_offline_btn']) || (isset($wplc_settings['wplc_pro_offline_btn']) && $wplc_settings['wplc_pro_offline_btn'] == "")) { $wplc_settings["wplc_pro_offline_btn"] = __("Leave a message", "wplivechat"); }
+	    if (!isset($wplc_settings['wplc_pro_offline_btn_send']) || (isset($wplc_settings['wplc_pro_offline_btn_send']) && $wplc_settings['wplc_pro_offline_btn_send'] == "")) { $wplc_settings["wplc_pro_offline_btn_send"] = __("Send message", "wplivechat"); }
+	    if (!isset($wplc_settings['wplc_pro_fst1'])) { $wplc_settings["wplc_pro_fst1"] = __("Questions?", "wplivechat"); }
+	    if (!isset($wplc_settings['wplc_pro_fst2'])) { $wplc_settings["wplc_pro_fst2"] = __("Chat with us", "wplivechat"); }
+	    if (!isset($wplc_settings['wplc_pro_fst3'])) { $wplc_settings["wplc_pro_fst3"] = __("Start live chat", "wplivechat"); }
+	    if (!isset($wplc_settings['wplc_pro_sst1'])) { $wplc_settings["wplc_pro_sst1"] = __("Start Chat", "wplivechat"); }
+	    if (!isset($wplc_settings['wplc_pro_sst1_survey'])) { $wplc_settings["wplc_pro_sst1_survey"] = __("Or chat to an agent now", "wplivechat"); }
+	    if (!isset($wplc_settings['wplc_pro_sst1e_survey'])) { $wplc_settings["wplc_pro_sst1e_survey"] = __("Chat ended", "wplivechat"); }
+	    if (!isset($wplc_settings['wplc_pro_sst2'])) { $wplc_settings["wplc_pro_sst2"] = __("Connecting. Please be patient...", "wplivechat"); }
+	    if (!isset($wplc_settings['wplc_pro_tst1'])) { $wplc_settings["wplc_pro_tst1"] = __("Reactivating your previous chat...", "wplivechat"); }
+	    if (!isset($wplc_settings['wplc_user_welcome_chat'])) { $wplc_settings["wplc_user_welcome_chat"] = __("Welcome. How may I help you?", "wplivechat"); }
+	    if (!isset($wplc_settings['wplc_welcome_msg'])) { $wplc_settings['wplc_welcome_msg'] = __("Please standby for an agent. While you wait for the agent you may type your message.","wplivechat"); }
+	    if (!isset($wplc_settings['wplc_user_enter'])) { $wplc_settings["wplc_user_enter"] = __("Press ENTER to send your message", "wplivechat"); }
+	    if (!isset($wplc_settings['wplc_close_btn_text'])) { $wplc_settings["wplc_close_btn_text"] = __("close", "wplivechat"); }
 
 
         if (!isset($wplc_settings['wplc_powered_by_link'])) { $wplc_settings["wplc_powered_by_link"] = "0"; }
@@ -681,6 +684,10 @@ function wplc_version_control() {
 
         
         if (!isset($wplc_settings['wplc_require_user_info'])) { $wplc_settings['wplc_require_user_info'] = "1"; }
+	    if (!isset($wplc_settings['wplc_user_default_visitor_name'])) {
+		    $wplc_default_visitor_name = __( "Guest", "wplivechat" );
+		    $wplc_settings['wplc_user_default_visitor_name'] = $wplc_default_visitor_name;
+	    }
         if (!isset($wplc_settings['wplc_loggedin_user_info'])) { $wplc_settings['wplc_loggedin_user_info'] = "1"; }
         if (!isset($wplc_settings['wplc_user_alternative_text'])) { 
             $wplc_alt_text = __("Please click \'Start Chat\' to initiate a chat with an agent", "wplivechat");
@@ -688,8 +695,9 @@ function wplc_version_control() {
         }
         if (!isset($wplc_settings['wplc_enabled_on_mobile'])) { $wplc_settings['wplc_enabled_on_mobile'] = "1"; }
         if(!isset($wplc_settings['wplc_record_ip_address'])){ $wplc_settings['wplc_record_ip_address'] = "1"; }
-        if(!isset($wplc_settings['wplc_enable_msg_sound'])){ $wplc_settings['wplc_enable_msg_sound'] = "1"; }        
-        if(!isset($wplc_settings['wplc_using_localization_plugin'])){ $wplc_settings['wplc_using_localization_plugin'] = 0; }
+        if(!isset($wplc_settings['wplc_enable_msg_sound'])){ $wplc_settings['wplc_enable_msg_sound'] = "1"; }
+	    if(!isset($wplc_settings['wplc_enable_font_awesome'])){ $wplc_settings['wplc_enable_font_awesome'] = "1"; }
+	    if(!isset($wplc_settings['wplc_using_localization_plugin'])){ $wplc_settings['wplc_using_localization_plugin'] = 0; }
 
         
         update_option("WPLC_SETTINGS", $wplc_settings);
@@ -876,7 +884,7 @@ function wplc_api_keys_menu() {
 }
 
 
-add_action("init","wplc_load_user_js",0);
+add_action("init","wplc_load_user_js",999);
 
 
 function wplc_load_user_js () {
@@ -1447,7 +1455,7 @@ function wplc_filter_control_live_chat_box_html_main_div_top($wplc_settings,$log
   	$hovercard_content = apply_filters("wplc_filter_hovercard_content", $hovercard_content);
 
     $ret_msg .= "<div id='wplc_hovercard' style='display:none' class='".$wplc_theme_type."'>";
-    $ret_msg .= "<div id='wplc_hovercard_min' class='wplc_button_standard wplc-color-border-1 wplc-color-bg-1'>".__("close", "wplivechat")."</div>";
+    $ret_msg .= "<div id='wplc_hovercard_min' class='wplc_button_standard wplc-color-border-1 wplc-color-bg-1'>".stripslashes( $wplc_settings['wplc_close_btn_text'] )."</div>";
     $ret_msg .= "<div id='wplc_hovercard_content'>".apply_filters("wplc_filter_live_chat_box_pre_layer1","").$hovercard_content."</div>";
     $ret_msg .= "<div id='wplc_hovercard_bottom'>".apply_filters("wplc_filter_hovercard_bottom_before","").apply_filters("wplc_filter_live_chat_box_hover_html_start_chat_button","",$wplc_settings,$logged_in,$wplc_using_locale)."</div>";
     $ret_msg .= "</div>";
@@ -1508,8 +1516,9 @@ function wplc_filter_control_chat_header_under($ret_msg,$wplc_settings) {
 	if( isset( $_SERVER['HTTPS'] ) && $_SERVER['HTTPS'] ){
 		$icon = preg_replace('/^http:\/\//', 'https:\/\/', $icon);
 	}
-	  
-    $ret_msg .= "<style>#wp-live-chat-header { background:url('$icon') no-repeat; background-size: cover; }</style>";
+	  $icon = apply_filters("wplc_filter_chaticon",$icon);
+
+	  $ret_msg .= "<style>#wp-live-chat-header { background:url('$icon') no-repeat; background-size: cover; }</style>";
     if (function_exists("wplc_acbc_filter_control_chat_header_under")) {
       remove_filter("wplc_filter_chat_header_under","wplc_acbc_filter_control_chat_header_under");  
     }
@@ -1536,10 +1545,16 @@ function wplc_filter_control_live_chat_box_html_ask_user_detail($wplc_settings) 
       $wplc_use_loggedin_user_details = 0;
   }
 
+	if (isset($wplc_settings['wplc_require_user_info']) && ( $wplc_settings['wplc_require_user_info'] == 1 || $wplc_settings['wplc_require_user_info'] == 'name' )) {
+		$wplc_ask_user_details = 1;
+	} else {
+		$wplc_ask_user_details = 0;
+	}
+
   $wplc_loggedin_user_name = "";
   $wplc_loggedin_user_email = "";
 
-  if ($wplc_use_loggedin_user_details == 1) {
+  if ($wplc_use_loggedin_user_details == 1 && is_user_logged_in()) {
       global $current_user;
 
       if ($current_user->data != null) {
@@ -1548,23 +1563,42 @@ function wplc_filter_control_live_chat_box_html_ask_user_detail($wplc_settings) 
           $wplc_loggedin_user_email = $current_user->user_email;
       }
   } else {
-      $wplc_loggedin_user_name = '';
-      $wplc_loggedin_user_email = '';
+	  if ( $wplc_ask_user_details == 0 ) {
+		  $wplc_loggedin_user_name = stripslashes( $wplc_settings['wplc_user_default_visitor_name'] );
+	  }
   }
 
   if (isset($wplc_settings['wplc_require_user_info']) && $wplc_settings['wplc_require_user_info'] == 1) {
-      $wplc_ask_user_details = 1;
-  } else {
-      $wplc_ask_user_details = 0;
-  }
+	  //Ask the user to enter name and email
 
-  if ($wplc_ask_user_details == 1) {
-      //Ask the user to enter name and email
+	  $ret_msg .= "<input type=\"text\" name=\"wplc_name\" id=\"wplc_name\" value='" . $wplc_loggedin_user_name . "' placeholder=\"" . __( "Name", "wplivechat" ) . "\" />";
+	  $ret_msg .= "<input type=\"text\" name=\"wplc_email\" id=\"wplc_email\" wplc_hide=\"0\" value=\"" . $wplc_loggedin_user_email . "\" placeholder=\"" . __( "Email", "wplivechat" ) . "\"  />";
+	  $ret_msg .= apply_filters( "wplc_start_chat_user_form_after_filter", "" );
 
-      $ret_msg .= "<input type=\"text\" name=\"wplc_name\" id=\"wplc_name\" value='".$wplc_loggedin_user_name."' placeholder=\"".__("Name", "wplivechat")."\" />";
-      $ret_msg .= "<input type=\"text\" name=\"wplc_email\" id=\"wplc_email\" wplc_hide=\"0\" value=\"".$wplc_loggedin_user_email."\" placeholder=\"".__("Email", "wplivechat")."\"  />";
-      $ret_msg .= apply_filters("wplc_start_chat_user_form_after_filter", "");
+  } elseif (isset($wplc_settings['wplc_require_user_info']) && $wplc_settings['wplc_require_user_info'] == 'email') {
+	  $ret_msg .= "<div style=\"padding: 7px; text-align: center;\">";
+	  if (isset($wplc_settings['wplc_user_alternative_text'])) {
+		  $ret_msg .= html_entity_decode( stripslashes($wplc_settings['wplc_user_alternative_text']) );
+	  }
+	  $ret_msg .= '</div>';
 
+	  $wplc_random_user_number = rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9);
+	  if ($wplc_loggedin_user_name != '') { $wplc_lin = $wplc_loggedin_user_name; } else {  $wplc_lin = 'user' . $wplc_random_user_number; }
+	  $ret_msg .= "<input type=\"hidden\" name=\"wplc_name\" id=\"wplc_name\" value=\"".$wplc_lin."\" />";
+	  $ret_msg .= "<input type=\"text\" name=\"wplc_email\" id=\"wplc_email\" wplc_hide=\"0\" value=\"" . $wplc_loggedin_user_email . "\" placeholder=\"" . __( "Email", "wplivechat" ) . "\"  />";
+	  $ret_msg .= apply_filters("wplc_start_chat_user_form_after_filter", "");
+  } elseif (isset($wplc_settings['wplc_require_user_info']) && $wplc_settings['wplc_require_user_info'] == 'name') {
+	  $ret_msg .= "<div style=\"padding: 7px; text-align: center;\">";
+	  if (isset($wplc_settings['wplc_user_alternative_text'])) {
+		  $ret_msg .= html_entity_decode( stripslashes($wplc_settings['wplc_user_alternative_text']) );
+	  }
+	  $ret_msg .= '</div>';
+
+	  $wplc_random_user_number = rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9);
+	  if ($wplc_loggedin_user_email != '' && $wplc_loggedin_user_email != null) { $wplc_lie = $wplc_loggedin_user_email; } else { $wplc_lie = $wplc_random_user_number . '@' . $wplc_random_user_number . '.com'; }
+	  $ret_msg .= "<input type=\"text\" name=\"wplc_name\" id=\"wplc_name\" value='" . $wplc_loggedin_user_name . "' placeholder=\"" . __( "Name", "wplivechat" ) . "\" />";
+	  $ret_msg .= "<input type=\"hidden\" name=\"wplc_email\" id=\"wplc_email\" wplc_hide=\"1\" value=\"".$wplc_lie."\" />";
+	  $ret_msg .= apply_filters("wplc_start_chat_user_form_after_filter", "");
   } else {
       //Dont ask the user
       $ret_msg .= "<div style=\"padding: 7px; text-align: center;\">";
@@ -1618,7 +1652,7 @@ function wplc_filter_control_live_chat_box_html_hovercard_chat_button($content,$
       $text = ($wplc_using_locale ? $wplc_sst_1 : stripslashes($wplc_settings['wplc_pro_sst1']));
       return "<button id=\"speeching_button\" type=\"button\"  class='wplc-color-bg-1 wplc-color-2'>$text</button>";
     } else {
-      $wplc_sst_1 = __('Leave a message', 'wplivechat');
+      $wplc_sst_1 = stripslashes($wplc_settings['wplc_pro_offline_btn']);
       return "<button id=\"speeching_button\" type=\"button\"  class='wplc-color-bg-1 wplc-color-2'>$wplc_sst_1</button>";
 
     }
@@ -1686,7 +1720,7 @@ if (isset($wplc_settings['wplc_theme'])) { $wplc_theme = $wplc_settings['wplc_th
         $wplc_settings_font = "#FFFFFF";
     }
   }
-  $ret_msg = "<input id=\"wplc_na_msg_btn\" type=\"button\" value=\"".__("Send message", "wplivechat")."\" style=\"background-color: ".$wplc_settings_fill." !important; color: ".$wplc_settings_font." !important;\"/>";
+  $ret_msg = "<input id=\"wplc_na_msg_btn\" type=\"button\" value=\"".stripslashes($wplc_settings['wplc_pro_offline_btn_send'])."\" style=\"background-color: ".$wplc_settings_fill." !important; color: ".$wplc_settings_font." !important;\"/>";
   return $ret_msg;
 }
 
@@ -1714,7 +1748,31 @@ function wplc_filter_control_live_chat_box_html_2nd_layer($wplc_settings,$logged
       $ret_msg .= apply_filters("wplc_filter_live_chat_box_html_start_chat_button",wplc_filter_control_live_chat_box_html_start_chat_button($wplc_settings,$wplc_using_locale )); 
       $ret_msg .= "</div>";
     } else {
+	    if ( isset( $wplc_settings['wplc_loggedin_user_info'] ) && $wplc_settings['wplc_loggedin_user_info'] == 1 ) {
+		    $wplc_use_loggedin_user_details = 1;
+	    } else {
+		    $wplc_use_loggedin_user_details = 0;
+	    }
 
+	    $wplc_loggedin_user_name  = '';
+	    $wplc_loggedin_user_email = '';
+
+	    if ( $wplc_use_loggedin_user_details == 1 ) {
+		    global $current_user;
+
+		    if ( $current_user->data != null ) {
+			    if ( is_user_logged_in() ) {
+				    //Logged in. Get name and email
+				    $wplc_loggedin_user_name = $current_user->user_nicename;
+				    $wplc_loggedin_user_email = $current_user->user_email;
+			    } else {
+				    $wplc_loggedin_user_name = stripslashes( $wplc_settings['wplc_user_default_visitor_name'] );
+			    }
+		    }
+	    } else {
+		    $wplc_loggedin_user_name  = '';
+		    $wplc_loggedin_user_email = '';
+	    }
 
       /* admin not logged in, show offline messages */
       $wplc_offline = __("We are currently offline. Please leave a message and we'll get back to you shortly.", "wplivechat");
@@ -1724,8 +1782,8 @@ function wplc_filter_control_live_chat_box_html_2nd_layer($wplc_settings,$logged
       $ret_msg .= $text;
       $ret_msg .= "</div>";
       $ret_msg .= "<div id=\"wplc_message_div\">";
-      $ret_msg .= "<input type=\"text\" name=\"wplc_name\" id=\"wplc_name\" value=\"\" placeholder=\"".__("Name", "wplivechat")."\" />";
-      $ret_msg .= "<input type=\"text\" name=\"wplc_email\" id=\"wplc_email\" value=\"\"  placeholder=\"".__("Email", "wplivechat")."\" />";
+      $ret_msg .= "<input type=\"text\" name=\"wplc_name\" id=\"wplc_name\" value=\"$wplc_loggedin_user_name\" placeholder=\"".__("Name", "wplivechat")."\" />";
+      $ret_msg .= "<input type=\"text\" name=\"wplc_email\" id=\"wplc_email\" value=\"$wplc_loggedin_user_email\"  placeholder=\"".__("Email", "wplivechat")."\" />";
       $ret_msg .= "<textarea name=\"wplc_message\" id=\"wplc_message\" placeholder=\"".__("Message", "wplivechat")."\"></textarea>";
 
       if(isset($_SERVER['HTTP_X_FORWARDED_FOR']) && $_SERVER['HTTP_X_FORWARDED_FOR'] != '') {
@@ -1997,7 +2055,7 @@ function wplc_output_box_ajax_new($cid = null) {
 
 }
 function wplc_return_default_theme($wplc_settings,$logged_in,$wplc_using_locale) {
-    $ret_msg = apply_filters("wplc_filter_live_chat_box_html_main_div_top",wplc_filter_control_live_chat_box_html_main_div_top($wplc_settings,$logged_in,$wplc_using_locale));
+	$ret_msg = apply_filters("wplc_filter_live_chat_box_html_main_div_top",wplc_filter_control_live_chat_box_html_main_div_top($wplc_settings,$logged_in,$wplc_using_locale));
     $ret_msg .= "<div class=\"wp-live-chat-wraper\">";
     $ret_msg .=   apply_filters("wplc_filter_live_chat_box_html_header_div_top",wplc_filter_control_live_chat_box_html_header_div_top($wplc_settings));
     $ret_msg .= " <i id=\"wp-live-chat-minimize\" class=\"fa fa-minus wplc-color-bg-2 wplc-color-1\" style=\"display:none;\"></i>";
@@ -2005,7 +2063,8 @@ function wplc_return_default_theme($wplc_settings,$logged_in,$wplc_using_locale)
     $ret_msg .= " <div id=\"wp-live-chat-1\" >";
     $ret_msg .=     apply_filters("wplc_filter_live_chat_box_html_1st_layer",wplc_filter_control_live_chat_box_html_1st_layer($wplc_settings,$logged_in,$wplc_using_locale));   
     $ret_msg .= " </div>";
-    $ret_msg .= " </div>";
+	$ret_msg .= '<div id="wplc-chat-alert" class="wplc-chat-alert wplc-chat-alert--' . $wplc_settings["wplc_theme"] . '"></div>';
+	$ret_msg .= " </div>";
     $ret_msg .= " <div id=\"wp-live-chat-2\" style=\"display:none;\">";
     $ret_msg .= 	apply_filters("wplc_filter_live_chat_box_survey","");
     $ret_msg .=     apply_filters("wplc_filter_live_chat_box_html_2nd_layer",wplc_filter_control_live_chat_box_html_2nd_layer($wplc_settings,$logged_in,$wplc_using_locale));   
@@ -2051,7 +2110,8 @@ function wplc_theme_control_function($wplc_settings,$logged_in,$wplc_using_local
     $ret_msg .= "<div class=\"wp-live-chat-wraper\">";
     $ret_msg .=   apply_filters("wplc_filter_live_chat_box_html_header_div_top",wplc_filter_control_live_chat_box_html_header_div_top($wplc_settings));
     $ret_msg .= " </div>";
-    $ret_msg .= " <div id=\"wp-live-chat-2\" style=\"display:none;\">";
+	$ret_msg .= '<div id="wplc-chat-alert" class="wplc-chat-alert wplc-chat-alert--' . $wplc_settings["wplc_theme"] . '"></div>';
+	$ret_msg .= " <div id=\"wp-live-chat-2\" style=\"display:none;\">";
     $ret_msg .= " <i id=\"wp-live-chat-minimize\" class=\"fa fa-minus wplc-color-bg-1 wplc-color-2\" style=\"display:none;\" ></i>";
     $ret_msg .= " <i id=\"wp-live-chat-close\" class=\"fa fa-times\" style=\"display:none;\" ></i>";
     $ret_msg .= " <div id=\"wplc-extra-div\" style=\"display:none;\">";
@@ -2722,9 +2782,13 @@ function wplc_draw_chat_area($cid) {
           $user_ip = __('IP Address not recorded', 'wplivechat');
       } else {
           $user_ip = "<a href='http://www.ip-adress.com/ip_tracer/" . $user_ip . "' title='".__('Whois for' ,'wplivechat')." ".$user_ip."' target='_BLANK'>".$user_ip."</a>";
-      } 
-      
-      echo "<h2>$status " . __('Chat with', 'wplivechat') . " " . $result->name . "</h2>";
+      }
+
+	echo "<h2>$status " . __( 'Chat with', 'wplivechat' ) . " " . $result->name . "</h2>";
+	if ( isset( $_GET['action'] ) && 'history' === $_GET['action'] ) {
+		echo "<span class='wplc-history__date'><strong>" . __( 'Starting Time:', 'wplivechat' ) . "</strong>" . date( 'Y-m-d H:i:s', current_time( strtotime( $result->timestamp ) ) ) . "</span>";
+		echo "<span class='wplc-history__date wplc-history__date-end'><strong>" . __( 'Ending Time:', 'wplivechat' ) . "</strong>" . date( 'Y-m-d H:i:s', current_time( strtotime( $result->last_active_timestamp ) ) ) . "</span>";
+	}
       echo "<style>#adminmenuwrap { display:none; } #adminmenuback { display:none; } #wpadminbar { display:none; } #wpfooter { display:none; } .update-nag { display:none; }</style>";
 
       echo "<div class=\"end_chat_div\">";
@@ -3013,7 +3077,8 @@ function wplc_activate() {
     wplc_handle_db();
     if (!get_option("WPLC_SETTINGS")) {
         $wplc_alt_text = __("Please click \'Start Chat\' to initiate a chat with an agent", "wplivechat");
-        $wplc_admin_email = get_option('admin_email');
+	    $wplc_default_visitor_name = __( "Guest", "wplivechat" );
+	    $wplc_admin_email = get_option('admin_email');
         add_option('WPLC_SETTINGS', array(
             "wplc_settings_align" => "2",
             "wplc_settings_enabled" => "1",
@@ -3029,6 +3094,7 @@ function wplc_activate() {
             "wplc_require_user_info" => '1',
             "wplc_loggedin_user_info" => '1',
             "wplc_user_alternative_text" => $wplc_alt_text,
+            "wplc_user_default_visitor_name" => $wplc_default_visitor_name,
             "wplc_enabled_on_mobile" => '1',
             "wplc_display_name" => '1',
             "wplc_record_ip_address" => '1',
@@ -3046,7 +3112,10 @@ function wplc_activate() {
             "wplc_pro_offline1" => __("We are currently offline. Please leave a message and we'll get back to you shortly.", "wplivechat"),
             "wplc_pro_offline2" => __("Sending message...", "wplivechat"),
             "wplc_pro_offline3" => __("Thank you for your message. We will be in contact soon.", "wplivechat"),
+            "wplc_pro_offline_btn" => __("Leave a message", "wplivechat"),
+            "wplc_pro_offline_btn_send" => __("Send message", "wplivechat"),
             "wplc_user_enter" => __("Press ENTER to send your message", "wplivechat"),
+            "wplc_close_btn_text" => __("close", "wplivechat"),
             "wplc_user_welcome_chat" => __("Welcome. How may I help you?", "wplivechat"),
             'wplc_welcome_msg' => __("Please standby for an agent. While you wait for the agent you may type your message.","wplivechat")
 
@@ -3157,8 +3226,11 @@ function wplc_add_user_stylesheet() {
         $show_chat_contents = 1;
     }
     if($show_chat_contents >= 1){
-        wp_register_style('wplc-font-awesome', plugins_url('/css/font-awesome.min.css', __FILE__));
-        wp_enqueue_style('wplc-font-awesome');
+	    $wplc_settings = get_option( 'WPLC_SETTINGS' );
+	    if ( isset( $wplc_settings ) && isset( $wplc_settings['wplc_enable_font_awesome'] ) && '1' === $wplc_settings['wplc_enable_font_awesome'] ) {
+		    wp_register_style( 'wplc-font-awesome', plugins_url( '/css/font-awesome.min.css', __FILE__ ) );
+		    wp_enqueue_style( 'wplc-font-awesome' );
+	    }
         wp_register_style('wplc-style', plugins_url('/css/wplcstyle.css', __FILE__));
         wp_enqueue_style('wplc-style');
 
@@ -3271,7 +3343,7 @@ function wplc_add_user_stylesheet() {
  * @return void
  */
 function wplc_add_admin_stylesheet() {
-    if (isset($_GET['page']) && ($_GET['page'] == 'wplivechat-menu' ||  $_GET['page'] == 'wplivechat-menu-api-keys-page' ||  $_GET['page'] == 'wplivechat-menu-extensions-page' || $_GET['page'] == 'wplivechat-menu-settings' || $_GET['page'] == 'wplivechat-menu-offline-messages' || $_GET['page'] == 'wplivechat-menu-history')) {
+    if (isset($_GET['page']) && ($_GET['page'] == 'wplivechat-menu' ||  $_GET['page'] == 'wplivechat-menu-api-keys-page' ||  $_GET['page'] == 'wplivechat-menu-extensions-page' || $_GET['page'] == 'wplivechat-menu-settings' || $_GET['page'] == 'wplivechat-menu-offline-messages' || $_GET['page'] == 'wplivechat-menu-history' || $_GET['page'] == 'wplivechat-menu-missed-chats')) {
         wp_register_style('wplc-admin-style', plugins_url('/css/jquery-ui.css', __FILE__));
         wp_enqueue_style('wplc-admin-style');
         wp_register_style('wplc-chat-style', plugins_url('/css/chat-style.css', __FILE__));
@@ -3689,7 +3761,8 @@ function wplc_head_basic() {
         if (isset($_POST['wplc_powered_by_link'])) { $wplc_data['wplc_powered_by_link'] = esc_attr($_POST['wplc_powered_by_link']); }
         if (isset($_POST['wplc_auto_pop_up'])) { $wplc_data['wplc_auto_pop_up'] = esc_attr($_POST['wplc_auto_pop_up']); }
         if (isset($_POST['wplc_require_user_info'])) { $wplc_data['wplc_require_user_info'] = esc_attr($_POST['wplc_require_user_info']); } else { $wplc_data['wplc_require_user_info'] = "0";  }
-        if (isset($_POST['wplc_loggedin_user_info'])) { $wplc_data['wplc_loggedin_user_info'] = esc_attr($_POST['wplc_loggedin_user_info']); } else {  $wplc_data['wplc_loggedin_user_info'] = "0"; }
+	    if (isset($_POST['wplc_user_default_visitor_name']) && $_POST['wplc_user_default_visitor_name'] != '') { $wplc_data['wplc_user_default_visitor_name'] = esc_attr($_POST['wplc_user_default_visitor_name']); } else { $wplc_data['wplc_user_default_visitor_name'] = __("Guest", "wplivechat"); }
+	    if (isset($_POST['wplc_loggedin_user_info'])) { $wplc_data['wplc_loggedin_user_info'] = esc_attr($_POST['wplc_loggedin_user_info']); } else {  $wplc_data['wplc_loggedin_user_info'] = "0"; }
         if (isset($_POST['wplc_user_alternative_text']) && $_POST['wplc_user_alternative_text'] != '') { $wplc_data['wplc_user_alternative_text'] = esc_attr($_POST['wplc_user_alternative_text']); } else { $wplc_data['wplc_user_alternative_text'] = __("Please click 'Start Chat' to initiate a chat with an agent", "wplivechat"); }
         if (isset($_POST['wplc_enabled_on_mobile'])) { $wplc_data['wplc_enabled_on_mobile'] = esc_attr($_POST['wplc_enabled_on_mobile']); } else {  $wplc_data['wplc_enabled_on_mobile'] = "0"; }
         if (isset($_POST['wplc_display_name'])) { $wplc_data['wplc_display_name'] = esc_attr($_POST['wplc_display_name']); } 
@@ -3700,6 +3773,7 @@ function wplc_head_basic() {
         
         if(isset($_POST['wplc_record_ip_address'])){ $wplc_data['wplc_record_ip_address'] = esc_attr($_POST['wplc_record_ip_address']); } else { $wplc_data['wplc_record_ip_address'] = "0"; }
         if(isset($_POST['wplc_enable_msg_sound'])){ $wplc_data['wplc_enable_msg_sound'] = esc_attr($_POST['wplc_enable_msg_sound']); } else { $wplc_data['wplc_enable_msg_sound'] = "0"; }
+	    if(isset($_POST['wplc_enable_font_awesome'])){ $wplc_data['wplc_enable_font_awesome'] = esc_attr($_POST['wplc_enable_font_awesome']); } else { $wplc_data['wplc_enable_font_awesome'] = "0"; }
 
         if (isset($_POST['wplc_pro_na'])) { $wplc_data['wplc_pro_na'] = esc_attr($_POST['wplc_pro_na']); }
         if (isset($_POST['wplc_hide_when_offline'])) { $wplc_data['wplc_hide_when_offline'] = esc_attr($_POST['wplc_hide_when_offline']); }
@@ -3710,7 +3784,9 @@ function wplc_head_basic() {
         if (isset($_POST['wplc_pro_offline1'])) { $wplc_data['wplc_pro_offline1'] = esc_attr($_POST['wplc_pro_offline1']); }
         if (isset($_POST['wplc_pro_offline2'])) { $wplc_data['wplc_pro_offline2'] = esc_attr($_POST['wplc_pro_offline2']); }
         if (isset($_POST['wplc_pro_offline3'])) { $wplc_data['wplc_pro_offline3'] = esc_attr($_POST['wplc_pro_offline3']); }
-        if (isset($_POST['wplc_using_localization_plugin'])){ $wplc_data['wplc_using_localization_plugin'] = esc_attr($_POST['wplc_using_localization_plugin']); }
+	    if (isset($_POST['wplc_pro_offline_btn'])) { $wplc_data['wplc_pro_offline_btn'] = esc_attr($_POST['wplc_pro_offline_btn']); }
+	    if (isset($_POST['wplc_pro_offline_btn_send'])) { $wplc_data['wplc_pro_offline_btn_send'] = esc_attr($_POST['wplc_pro_offline_btn_send']); }
+	    if (isset($_POST['wplc_using_localization_plugin'])){ $wplc_data['wplc_using_localization_plugin'] = esc_attr($_POST['wplc_using_localization_plugin']); }
 
 
         if (isset($_POST['wplc_pro_fst1'])) { $wplc_data['wplc_pro_fst1'] = esc_attr($_POST['wplc_pro_fst1']); }
@@ -3723,6 +3799,7 @@ function wplc_head_basic() {
         if (isset($_POST['wplc_pro_tst1'])) { $wplc_data['wplc_pro_tst1'] = esc_attr($_POST['wplc_pro_tst1']); }        
         if (isset($_POST['wplc_pro_intro'])) { $wplc_data['wplc_pro_intro'] = esc_attr($_POST['wplc_pro_intro']); }
         if (isset($_POST['wplc_user_enter'])) { $wplc_data['wplc_user_enter'] = esc_attr($_POST['wplc_user_enter']); }
+        if (isset($_POST['wplc_close_btn_text'])) { $wplc_data['wplc_close_btn_text'] = esc_attr($_POST['wplc_close_btn_text']); }
         if (isset($_POST['wplc_user_welcome_chat'])) { $wplc_data['wplc_user_welcome_chat'] = esc_attr($_POST['wplc_user_welcome_chat']); }
         if (isset($_POST['wplc_welcome_msg'])) { $wplc_data['wplc_welcome_msg'] = esc_attr($_POST['wplc_welcome_msg']); }
 
@@ -4000,41 +4077,36 @@ function wplc_extensions_menu() {
                 )            
             )
         );
+	    if(is_array($response) && isset($response['body'])){
+		    $data = json_decode($response['body']);
+		    global $wplc_version;
+		    $wplc_version = str_replace(",","",$wplc_version);
+		    if ($data) {
+			    $output = "";
+			    foreach ($data as $extension) {
+				    if (!isset($extension->fromversion)) { $extension->fromversion = 0; }
+				    if (intval($wplc_version) >= intval($extension->fromversion)) {
+					    $output .= '<div class="wplc-extension">';
+					    $output .= '<h3 class="wplc-extension-title">'.$extension->title.'</h3>';
+					    $output .= '<a href="'.$extension->link.'" title="'.$extension->title.'" target="_BLANK">';
+					    $output .= '<img width="320" height="200" src="'.$extension->image.'" class="attachment-showcase wp-post-image" alt="'.$extension->title.'" title="'.$extension->title.'">';
+					    $output .= '</a>';
+					    $output .= '<p></p>';
+					    $output .= '<p><div class="wplc-extension-label-box">';
+					    $output .= '</div></p>';
+					    $output .= '<p>'.$extension->description.'</p>';
+					    if ($extension->slug != false && is_plugin_active($extension->slug."/".$extension->slug.".php")) {
+						    $button = '<a href="javascriot:void(0);" title="" disabled class="button-secondary">'.__("Already installed","wplivechat").'</a>';
+					    } else {
+						    $button = '<a href="'.$extension->link.'" title="'.$extension->title.'" class="button-secondary" target="_BLANK">'.$extension->button_text.'</a>';
+					    }
+					    $output .= $button;
+					    $output .= '</div>';
+				    }
+			    }
+			    echo $output;
+		    }
 
-        if(is_array($response) && isset($response['body'])){
-	        $data = json_decode($response['body']);
-
-	        global $wplc_version;
-	        $wplc_version = str_replace(",","",$wplc_version);
-
-
-	        if ($data) {
-	            $output = "";
-	            foreach ($data as $extension) {
-	              if (!isset($extension->fromversion)) { $extension->fromversion = 0; }
-	              if (intval($wplc_version) >= intval($extension->fromversion)) {
-
-
-	                $output .= '<div class="wplc-extension">';
-	                $output .= '<h3 class="wplc-extension-title">'.$extension->title.'</h3>';
-	                $output .= '<a href="'.$extension->link.'" title="'.$extension->title.'" target="_BLANK">';
-	                $output .= '<img width="320" height="200" src="'.$extension->image.'" class="attachment-showcase wp-post-image" alt="'.$extension->title.'" title="'.$extension->title.'">';
-	                $output .= '</a>';
-	                $output .= '<p></p>';
-	                $output .= '<p><div class="wplc-extension-label-box">';
-	                $output .= '</div></p>';
-	                $output .= '<p>'.$extension->description.'</p>';
-	                if ($extension->slug != false && is_plugin_active($extension->slug."/".$extension->slug.".php")) {
-	                    $button = '<a href="javascriot:void(0);" title="" disabled class="button-secondary">'.__("Already installed","wplivechat").'</a>';
-	                } else {
-	                    $button = '<a href="'.$extension->link.'" title="'.$extension->title.'" class="button-secondary" target="_BLANK">'.$extension->button_text.'</a>';
-	                }
-	                $output .= $button;
-	                $output .= '</div>';
-	              }
-	            }
-	            echo $output;
-	        }
 	    }
     ?>
 
@@ -4801,22 +4873,25 @@ function wplc_basic_hide_chat_when_offline(){
 function wplc_string_check() {
   $wplc_settings = get_option("WPLC_SETTINGS");
 
-  if (!isset($wplc_settings['wplc_pro_na']) || (isset($wplc_settings['wplc_pro_na']) && $wplc_settings['wplc_pro_na'] == "")) { $wplc_settings["wplc_pro_na"] = __("Chat offline. Leave a message", "wplivechat"); }
-  if (!isset($wplc_settings['wplc_pro_intro']) || (isset($wplc_settings['wplc_pro_intro']) && $wplc_settings['wplc_pro_intro'] == "")) { $wplc_settings["wplc_pro_intro"] = __("Hello. Please input your details so that I may help you.", "wplivechat"); }
-  if (!isset($wplc_settings['wplc_pro_offline1']) || (isset($wplc_settings['wplc_pro_offline1']) && $wplc_settings['wplc_pro_offline1'] == "")) { $wplc_settings["wplc_pro_offline1"] = __("We are currently offline. Please leave a message and we'll get back to you shortly.", "wplivechat"); }
-  if (!isset($wplc_settings['wplc_pro_offline2']) || (isset($wplc_settings['wplc_pro_offline2']) && $wplc_settings['wplc_pro_offline2'] == "")) { $wplc_settings["wplc_pro_offline2"] =  __("Sending message...", "wplivechat"); }
-  if (!isset($wplc_settings['wplc_pro_offline3']) || (isset($wplc_settings['wplc_pro_offline3']) && $wplc_settings['wplc_pro_offline3'] == "")) { $wplc_settings["wplc_pro_offline3"] = __("Thank you for your message. We will be in contact soon.", "wplivechat"); }
-  if (!isset($wplc_settings['wplc_pro_fst1']) || (isset($wplc_settings['wplc_pro_fst1']) && $wplc_settings['wplc_pro_fst1'] == "")) { $wplc_settings["wplc_pro_fst1"] = __("Questions?", "wplivechat"); }
-  if (!isset($wplc_settings['wplc_pro_fst2']) || (isset($wplc_settings['wplc_pro_fst2']) && $wplc_settings['wplc_pro_fst2'] == "")) { $wplc_settings["wplc_pro_fst2"] = __("Chat with us", "wplivechat"); }
-  if (!isset($wplc_settings['wplc_pro_fst3']) || (isset($wplc_settings['wplc_pro_fst3']) && $wplc_settings['wplc_pro_fst3'] == "")) { $wplc_settings["wplc_pro_fst3"] = __("Start live chat", "wplivechat"); }
-  if (!isset($wplc_settings['wplc_pro_sst1']) || (isset($wplc_settings['wplc_pro_sst1']) && $wplc_settings['wplc_pro_sst1'] == "")) { $wplc_settings["wplc_pro_sst1"] = __("Start Chat", "wplivechat"); }
-  if (!isset($wplc_settings['wplc_pro_sst1_survey']) || (isset($wplc_settings['wplc_pro_sst1_survey']) && $wplc_settings['wplc_pro_sst1_survey'] == "")) { $wplc_settings["wplc_pro_sst1_survey"] = __("Or chat to an agent now", "wplivechat"); }
-  if (!isset($wplc_settings['wplc_pro_sst1e_survey']) || (isset($wplc_settings['wplc_pro_sst1e_survey']) && $wplc_settings['wplc_pro_sst1e_survey'] == "")) { $wplc_settings["wplc_pro_sst1e_survey"] = __("Chat ended", "wplivechat"); }
-  if (!isset($wplc_settings['wplc_pro_sst2']) || (isset($wplc_settings['wplc_pro_sst2']) && $wplc_settings['wplc_pro_sst2'] == "")) { $wplc_settings["wplc_pro_sst2"] = __("Connecting. Please be patient...", "wplivechat"); }
-  if (!isset($wplc_settings['wplc_pro_tst1']) || (isset($wplc_settings['wplc_pro_tst1']) && $wplc_settings['wplc_pro_tst1'] == "")) { $wplc_settings["wplc_pro_tst1"] = __("Reactivating your previous chat...", "wplivechat"); }
-  if (!isset($wplc_settings['wplc_user_welcome_chat']) || (isset($wplc_settings['wplc_user_welcome_chat']) && $wplc_settings['wplc_user_welcome_chat'] == "")) { $wplc_settings["wplc_user_welcome_chat"] = __("Welcome. How may I help you?", "wplivechat"); }
-  if (!isset($wplc_settings['wplc_welcome_msg']) || (isset($wplc_settings['wplc_welcome_msg']) && $wplc_settings['wplc_welcome_msg'] == "")) { $wplc_settings['wplc_welcome_msg'] = __("Please standby for an agent. While you wait for the agent you may type your message.","wplivechat"); }
-  if (!isset($wplc_settings['wplc_user_enter']) || (isset($wplc_settings['wplc_user_enter']) && $wplc_settings['wplc_user_enter'] == "")) { $wplc_settings["wplc_user_enter"] = __("Press ENTER to send your message", "wplivechat"); }
+	if (!isset($wplc_settings['wplc_pro_na'])) { $wplc_settings["wplc_pro_na"] = __("Chat offline. Leave a message", "wplivechat"); }
+	if (!isset($wplc_settings['wplc_pro_intro'])) { $wplc_settings["wplc_pro_intro"] = __("Hello. Please input your details so that I may help you.", "wplivechat"); }
+	if (!isset($wplc_settings['wplc_pro_offline1'])) { $wplc_settings["wplc_pro_offline1"] = __("We are currently offline. Please leave a message and we'll get back to you shortly.", "wplivechat"); }
+	if (!isset($wplc_settings['wplc_pro_offline2'])) { $wplc_settings["wplc_pro_offline2"] =  __("Sending message...", "wplivechat"); }
+	if (!isset($wplc_settings['wplc_pro_offline3'])) { $wplc_settings["wplc_pro_offline3"] = __("Thank you for your message. We will be in contact soon.", "wplivechat"); }
+	if (!isset($wplc_settings['wplc_pro_offline_btn']) || (isset($wplc_settings['wplc_pro_offline_btn']) && $wplc_settings['wplc_pro_offline_btn'] == "")) { $wplc_settings["wplc_pro_offline_btn"] = __("Leave a message", "wplivechat"); }
+	if (!isset($wplc_settings['wplc_pro_offline_btn_send']) || (isset($wplc_settings['wplc_pro_offline_btn_send']) && $wplc_settings['wplc_pro_offline_btn_send'] == "")) { $wplc_settings["wplc_pro_offline_btn_send"] = __("Send message", "wplivechat"); }
+	if (!isset($wplc_settings['wplc_pro_fst1'])) { $wplc_settings["wplc_pro_fst1"] = __("Questions?", "wplivechat"); }
+	if (!isset($wplc_settings['wplc_pro_fst2'])) { $wplc_settings["wplc_pro_fst2"] = __("Chat with us", "wplivechat"); }
+	if (!isset($wplc_settings['wplc_pro_fst3'])) { $wplc_settings["wplc_pro_fst3"] = __("Start live chat", "wplivechat"); }
+	if (!isset($wplc_settings['wplc_pro_sst1'])) { $wplc_settings["wplc_pro_sst1"] = __("Start Chat", "wplivechat"); }
+	if (!isset($wplc_settings['wplc_pro_sst1_survey'])) { $wplc_settings["wplc_pro_sst1_survey"] = __("Or chat to an agent now", "wplivechat"); }
+	if (!isset($wplc_settings['wplc_pro_sst1e_survey'])) { $wplc_settings["wplc_pro_sst1e_survey"] = __("Chat ended", "wplivechat"); }
+	if (!isset($wplc_settings['wplc_pro_sst2'])) { $wplc_settings["wplc_pro_sst2"] = __("Connecting. Please be patient...", "wplivechat"); }
+	if (!isset($wplc_settings['wplc_pro_tst1'])) { $wplc_settings["wplc_pro_tst1"] = __("Reactivating your previous chat...", "wplivechat"); }
+	if (!isset($wplc_settings['wplc_user_welcome_chat'])) { $wplc_settings["wplc_user_welcome_chat"] = __("Welcome. How may I help you?", "wplivechat"); }
+	if (!isset($wplc_settings['wplc_welcome_msg'])) { $wplc_settings['wplc_welcome_msg'] = __("Please standby for an agent. While you wait for the agent you may type your message.","wplivechat"); }
+	if (!isset($wplc_settings['wplc_user_enter'])) { $wplc_settings["wplc_user_enter"] = __("Press ENTER to send your message", "wplivechat"); }
+	if (!isset($wplc_settings['wplc_close_btn_text'])) { $wplc_settings["wplc_close_btn_text"] = __("close", "wplivechat"); }
 
   update_option("WPLC_SETTINGS",$wplc_settings);
 

@@ -162,10 +162,33 @@ if (get_option("WPLC_HIDE_CHAT") == true) {
                 -->
                   <tr>
                   <td width='300' valign='top'>
-                      <?php _e("Require Name And Email","wplivechat")?>: <i class="fa fa-question-circle wplc_light_grey wplc_settings_tooltip" title="<?php _e("Users will have to enter their Name and Email Address when starting a chat", "wplivechat") ?>"></i>                      
+                      <?php _e("Required Chat Box Fields","wplivechat")?>: <i class="fa fa-question-circle wplc_light_grey wplc_settings_tooltip" title="<?php _e("Set default fields that will be displayed when users starting a chat", "wplivechat") ?>"></i>
                   </td>
                   <td valign='top'>
-                      <input type="checkbox" value="1" name="wplc_require_user_info" <?php if(isset($wplc_settings['wplc_require_user_info'])  && $wplc_settings['wplc_require_user_info'] == 1 ) { echo "checked"; } ?> />                    
+                      <div class="wplc-require-user-info__item">
+                          <input type="radio" value="1" name="wplc_require_user_info" id="wplc_require_user_info_both" <?php if (isset($wplc_settings['wplc_require_user_info']) && $wplc_settings['wplc_require_user_info'] == '1') { echo "checked"; } ?> />
+                          <label for="wplc_require_user_info_both"><?php _e( 'Show name and email', 'wplivechat' ); ?></label>
+                      </div>
+                      <div class="wplc-require-user-info__item">
+                          <input type="radio" value="email" name="wplc_require_user_info" id="wplc_require_user_info_email" <?php if (isset($wplc_settings['wplc_require_user_info']) && $wplc_settings['wplc_require_user_info'] == 'email') { echo "checked"; } ?> />
+                          <label for="wplc_require_user_info_email"><?php _e( 'Show email', 'wplivechat' ); ?></label>
+                      </div>
+                      <div class="wplc-require-user-info__item">
+                          <input type="radio" value="name" name="wplc_require_user_info" id="wplc_require_user_info_name" <?php if (isset($wplc_settings['wplc_require_user_info']) && $wplc_settings['wplc_require_user_info'] == 'name') { echo "checked"; } ?> />
+                          <label for="wplc_require_user_info_name"><?php _e( 'Show name', 'wplivechat' ); ?></label>
+                      </div>
+                      <div class="wplc-require-user-info__item">
+                          <input type="radio" value="0" name="wplc_require_user_info" id="wplc_require_user_info_none" <?php if (isset($wplc_settings['wplc_require_user_info']) && $wplc_settings['wplc_require_user_info'] == '0') { echo "checked"; } ?> />
+                          <label for="wplc_require_user_info_none"><?php _e( 'No fields', 'wplivechat' ); ?></label>
+                      </div>
+                  </td>
+              </tr>
+              <tr class="wplc-user-default-visitor-name__row">
+                  <td width='300' valign='top'>
+		              <?php _e("Default visitor name","wplivechat"); ?>: <i class="fa fa-question-circle wplc_light_grey wplc_settings_tooltip" title="<?php _e("This name will be displayed for all not logged in visitors", "wplivechat") ?>"></i>
+                  </td>
+                  <td valign='top'>
+                      <input type="text" name="wplc_user_default_visitor_name" id="wplc_user_default_visitor_name" value="<?php if ( isset( $wplc_settings['wplc_user_default_visitor_name'] ) ) { echo stripslashes( $wplc_settings['wplc_user_default_visitor_name'] ); } else { echo __( "Guest", "wplivechat" ); } ?>" />
                   </td>
               </tr>
               <tr>
@@ -208,6 +231,14 @@ if (get_option("WPLC_HIDE_CHAT") == true) {
                       <input type="checkbox" value="1" name="wplc_enable_msg_sound" <?php if(isset($wplc_settings['wplc_enable_msg_sound'])  && $wplc_settings['wplc_enable_msg_sound'] == 1 ) { echo "checked"; } ?> />                      
                   </td>
               </tr>
+              <tr>
+                  <td width='300' valign='top'>
+			          <?php _e("Enable Font Awesome set","wplivechat"); ?>: <i class="fa fa-question-circle wplc_light_grey wplc_settings_tooltip" title="<?php _e("Disable this if you have Font Awesome set included with your theme", "wplivechat") ?>"></i>
+                  </td>
+                  <td valign='top'>
+                      <input type="checkbox" value="1" name="wplc_enable_font_awesome" <?php if(isset($wplc_settings['wplc_enable_font_awesome']) && $wplc_settings['wplc_enable_font_awesome'] == 1 ) { echo "checked"; } ?> />
+                  </td>
+              </tr>
               <?php if (!function_exists("wplc_pro_activate")) { ?>
 
               <tr>
@@ -241,7 +272,21 @@ if (get_option("WPLC_HIDE_CHAT") == true) {
                   </td>
               </tr>
 
-
+                  <tr class="wplc-exclude-post-types__row">
+                      <td width='200' valign='top'>
+			              <?php _e("Exclude chat window on selected post types","wplivechat"); ?>: <i class="fa fa-question-circle wplc_light_grey wplc_settings_tooltip" title="<?php _e("Do not show the chat window on the following post types pages.", "wplivechat") ?>"></i>
+                      </td>
+                      <td valign='top'>
+                          <input type="text" readonly="readonly"/>
+                          <small>
+                              <i>
+					              <?php _e("available in the","wplivechat")?>
+                                  <a href="http://www.wp-livechat.com/purchase-pro/?utm_source=plugin&utm_medium=link&utm_campaign=exclude_pages" title="<?php _e("Pro Add-on","wplivechat")?>" target="_BLANK"><?php _e("Pro Add-on","wplivechat")?></a>
+					              <?php _e("only","wplivechat")?>
+                              </i>
+                          </small>
+                      </td>
+                  </tr>
 
               <?php } ?>
             </table>
@@ -306,6 +351,22 @@ if (get_option("WPLC_HIDE_CHAT") == true) {
                     </small>
                 </td>
             </tr>
+              <!-- Chat Icon-->
+              <tr>
+                  <td width='300' valign='top'>
+			          <?php _e("Icon","wplivechat")?>:
+                  </td>
+                  <td>
+                      <input id="wplc_pro_chat_button" type="button" value="<?php _e("Upload Image","wplivechat")?>" readonly disabled />
+                      <small>
+                          <i>
+					          <?php _e("available in the","wplivechat")?>
+                              <a href="http://www.wp-livechat.com/purchase-pro/?utm_source=plugin&utm_medium=link&utm_campaign=pic" title="<?php _e("Pro Add-on","wplivechat")?>" target="_BLANK"><?php _e("Pro Add-on","wplivechat")?></a>
+					          <?php _e("only","wplivechat")?>
+                          </i>
+                      </small>
+                  </td>
+              </tr>
             <!-- Chat Pic-->
             <tr>
                 <td width='300' valign='top'>
@@ -498,6 +559,18 @@ if (isset($wplc_settings['wplc_hide_when_offline']) && $wplc_settings['wplc_hide
                             <input id="wplc_pro_offline3" name="wplc_pro_offline3" type="text" size="50" maxlength="150" class="regular-text" value="<?php if (isset($wplc_settings['wplc_pro_offline3'])) { echo stripslashes($wplc_settings['wplc_pro_offline3']); } ?>" /> <br />
 
 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="300" valign="top"><?php _e("Offline Button Text", "wplivechat") ?>:</td>
+                        <td>
+                            <input id="wplc_pro_offline_btn" name="wplc_pro_offline_btn" type="text" size="50" maxlength="50" class="regular-text" value="<?php if (isset($wplc_settings['wplc_pro_offline_btn'])) { echo stripslashes($wplc_settings['wplc_pro_offline_btn']); } ?>" /> <br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="300" valign="top"><?php _e("Offline Send Button Text", "wplivechat") ?>:</td>
+                        <td>
+                            <input id="wplc_pro_offline_btn_send" name="wplc_pro_offline_btn_send" type="text" size="50" maxlength="50" class="regular-text" value="<?php if (isset($wplc_settings['wplc_pro_offline_btn_send'])) { echo stripslashes($wplc_settings['wplc_pro_offline_btn_send']); } ?>" /> <br />
                         </td>
                     </tr>
                     <tr>
@@ -851,6 +924,12 @@ if (isset($wplc_settings['wplc_hide_when_offline']) && $wplc_settings['wplc_hide
                             <input id="wplc_user_enter" name="wplc_user_enter" type="text" size="50" maxlength="150" class="regular-text" value="<?php echo stripslashes($wplc_settings['wplc_user_enter']) ?>" /> <span class='description'><?php _e('This text is shown above the user chat input field', 'wplivechat'); ?></span><br />
                         </td>
                     </tr>
+                      <tr class="wplc_localization_strings">
+                          <td width="200" valign="top"><?php _e("Close Button Text", "wplivechat") ?>:</td>
+                          <td>
+                              <input id="wplc_close_btn_text" name="wplc_close_btn_text" type="text" size="50" maxlength="150" class="regular-text" value="<?php echo stripslashes($wplc_settings['wplc_close_btn_text']) ?>" /><br />
+                          </td>
+                      </tr>
                         
                     <tr>
                         <th><label for=""><?php _e('Choose an animation', 'wplivechat'); ?></label></th>
@@ -936,4 +1015,5 @@ if (isset($wplc_settings['wplc_hide_when_offline']) && $wplc_settings['wplc_hide
     </form>
     
     </div>
+
 

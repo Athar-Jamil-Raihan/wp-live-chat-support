@@ -266,9 +266,12 @@ function wplc_init_ajax_callback() {
                             //$array['check'] = true;
                             
                         } 
-                        else if($_POST['status'] == 3){
+                        else if($_POST['status'] == 3 || $_POST['status'] == 10){
                             //wplc_update_user_on_page(sanitize_text_field($_POST['cid']), 3);
                             $messages = wplc_return_user_chat_messages(sanitize_text_field($_POST['cid']),$wplc_settings,$cdata);
+	                        if ( $_POST['status'] == 10 ) {
+		                        $array['alert'] = true;
+	                        }
                             if ($messages){
                                 wplc_mark_as_read_user_chat_messages(sanitize_text_field($_POST['cid'])); 
                                 $array['status'] = 3;
@@ -322,7 +325,8 @@ function wplc_init_ajax_callback() {
                             $array['data'] = null;
                             $array['check'] = true;
                             if($_POST['status'] == 5){
-                                $messages = wplc_return_chat_messages(sanitize_text_field($_POST['cid']),false,true,$wplc_settings,$cdata,'array',false);
+	                            $array['sound'] = false;
+	                            $messages = wplc_return_chat_messages(sanitize_text_field($_POST['cid']),false,true,$wplc_settings,$cdata,'array',false);
                                 if ($messages){
                                     $array['data'] = $messages;
                                 }

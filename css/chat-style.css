@@ -204,7 +204,7 @@
     border-style: solid;
 }
 
-.wplc-user-message img{
+.wplc-user-message img.wplc-user-message-avatar {
 
     border-radius: 25px;
     position: absolute;
@@ -973,4 +973,23 @@ span.wplc_system_notification {
     display: inline-block;
     width: 100px;
     margin-top: 5px;
+}
+
+.wplc-history__date {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.wplc-history__date-end {
+    margin-bottom: 10px;
+}
+
+.wplc-history__date strong {
+    margin-right: 5px;
+}
+
+.wplc-exclude-post-types__item,
+.wplc-require-user-info__item {
+    margin-bottom: 5px;
+
 }

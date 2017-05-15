@@ -531,6 +531,9 @@ jQuery(document).ready(function() {
                                 }
 
                                 if(wplc_new_message_sound){
+                                    if (response['alert']) {
+                                        jQuery('#wplc-chat-alert').addClass('is-active');
+                                    }
                                     var height = jQuery('#wplc_chatbox')[0].scrollHeight;
                                     jQuery('#wplc_chatbox').scrollTop(height);
                                     if (typeof wplc_enable_ding !== 'undefined' && wplc_enable_ding === "1") {
@@ -1039,10 +1042,16 @@ jQuery(document).ready(function() {
                 if (typeof wplc_name == "undefined" || wplc_name == null || wplc_name == "") {
                     wplc_name = Cookies.get('wplc_name');
                 }
+                if (typeof wplc_name == "undefined") {
+                    wplc_name = 'Guest';
+                }
 
                 var wplc_email = jQuery("#wplc_email").val();
                 if (typeof wplc_email == "undefined" || wplc_email == null || wplc_email == "") {
                     wplc_email = Cookies.get('wplc_email');
+                }
+                if (typeof wplc_email == "undefined") {
+                    wplc_email = '';
                 }
 
 
@@ -1213,4 +1222,17 @@ jQuery(document).ready(function() {
                 open_chat(0);
             });
         }
+
+    // Fix conflict with Responsive Lighbox plugin
+    setTimeout(function () {
+        if (jQuery('html').hasClass('nivo-lightbox-notouch') || jQuery('a[rel*="lightbox"]').length) {
+            jQuery("body").on("keyup", function (event) {
+                if (event.keyCode === 13) {
+                    jQuery("#wplc_send_msg").trigger("click");
+                }
+            });
+        }
+    }, 5000);
+
+
 });

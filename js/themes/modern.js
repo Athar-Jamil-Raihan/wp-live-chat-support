@@ -1,3 +1,4 @@
+
 jQuery(document).on("wplc_minimize_chat", function( e ) {
     wplc_is_chat_open = false;
     jQuery('#wp-live-chat').height("");
@@ -104,6 +105,7 @@ jQuery(document).ready(function() {
 	//opens chat when clicked on top bar
 	jQuery("body").on("click", "#wp-live-chat-header", function() {
         jQuery("#wplc_hovercard").fadeOut("fast");
+        jQuery("#wplc-chat-alert").removeClass('is-active');
         wplc_is_chat_open = true;
 	    jQuery.event.trigger({type: "wplc_open_chat"});
 	});
@@ -132,5 +134,6 @@ jQuery(document).ready(function() {
 
 
             
+
 
 });

@@ -446,7 +446,7 @@ function wplc_filter_control_list_chats_actions($actions,$result,$post_data) {
         else if (intval($result->status) == 3) {
             $url_params = "&action=ac&cid=".$result->id.$aid;
             $url = admin_url( 'admin.php?page=wplivechat-menu'.$url_params);
-	        if ( !isset( $result->agent_id ) || $wplc_current_user == $result->agent_id ) { //Added backwards compat checks
+	        if ( ! function_exists("wplc_pro_version_control") || !isset( $result->agent_id ) || $wplc_current_user == $result->agent_id ) { //Added backwards compat checks
 		        $actions = "<a href=\"".$url."\" class=\"wplc_open_chat button button-primary\" window-title=\"WP_Live_Chat_".$result->id."\">".__("Open Chat","wplivechat")."</a>";
 	        } else {
 		        $actions = "<span class=\"wplc-chat-in-progress\">" . __( "In progress with another agent", "wplivechat" ) . "</span>";
@@ -1724,7 +1724,7 @@ function wplc_return_browser_image($string,$size) {
     switch($string) {
         
         case "Internet Explorer":
-            return "web_".$size."x".$size.".png";
+            return "internet-explorer_".$size."x".$size.".png";
             break;
         case "Mozilla Firefox":
             return "firefox_".$size."x".$size.".png";
@@ -1750,9 +1750,11 @@ function wplc_return_browser_image($string,$size) {
 }
 function wplc_return_browser_string($user_agent) {
 if(strpos($user_agent, 'MSIE') !== FALSE)
-   return 'Internet explorer';
+   return 'Internet Explorer';
  elseif(strpos($user_agent, 'Trident') !== FALSE) //For Supporting IE 11
-    return 'Internet explorer';
+    return 'Internet Explorer';
+elseif(strpos($user_agent, 'Edge') !== FALSE)
+	return 'Internet Explorer';
  elseif(strpos($user_agent, 'Firefox') !== FALSE)
    return 'Mozilla Firefox';
  elseif(strpos($user_agent, 'Chrome') !== FALSE)
