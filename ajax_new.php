@@ -309,7 +309,7 @@ function wplc_init_ajax_callback() {
                             wplc_update_user_on_page(sanitize_text_field($_POST['cid']), 8, sanitize_text_field($_POST['wplcsession']));
                             $array['check'] = true;
                             $array['status'] = 8;
-                            $array['data'] =  __("Admin has closed and ended the chat","wplivechat");
+                            $array['data'] =  sprintf( __("%s has closed and ended the chat","wplivechat"), $array['aname']);
                         }
                         else if(intval($new_status == 2)) { // pending
                             $array['debug'] = "we are here ".__LINE__;
