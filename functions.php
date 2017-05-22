@@ -1,5 +1,5 @@
 <?php
-$wplc_basic_plugin_url = get_option('siteurl')."/wp-content/plugins/wp-live-chat-support/";
+$wplc_basic_plugin_url = plugins_url()."/wp-live-chat-support/";
 
 function wplc_log_user_on_page($name,$email,$session, $is_mobile = false) {
     global $wpdb;
