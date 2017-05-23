@@ -466,7 +466,15 @@ if (get_option("WPLC_HIDE_CHAT") == true) {
                       }
                       ?>/>
                   </td>
-              </tr>   
+              </tr>
+              <tr>
+                  <td>
+			          <?php _e("Open chat box when new message comes from an agent", "wplivechat") ?>
+                  </td>
+                  <td>
+                      <input type="checkbox" name="wplc_open_minimized_chat_box" id="wplc_open_minimized_chat_box" value="1" <?php echo (isset($wplc_settings['wplc_open_minimized_chat_box']) && $wplc_settings['wplc_open_minimized_chat_box'] == 1) ? 'checked' : ''; ?>/><br/>
+                  </td>
+              </tr>
               <tr>
                   <td>
                       <?php _e("Display a timestamp in the chat window", "wplivechat") ?>

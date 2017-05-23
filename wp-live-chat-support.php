@@ -2063,7 +2063,11 @@ function wplc_return_default_theme($wplc_settings,$logged_in,$wplc_using_locale)
     $ret_msg .= " <div id=\"wp-live-chat-1\" >";
     $ret_msg .=     apply_filters("wplc_filter_live_chat_box_html_1st_layer",wplc_filter_control_live_chat_box_html_1st_layer($wplc_settings,$logged_in,$wplc_using_locale));   
     $ret_msg .= " </div>";
-	$ret_msg .= '<div id="wplc-chat-alert" class="wplc-chat-alert wplc-chat-alert--' . $wplc_settings["wplc_theme"] . '"></div>';
+	$ret_msg .= '<div id="wplc-chat-alert" class="wplc-chat-alert wplc-chat-alert--' . $wplc_settings["wplc_theme"] . '"';
+	if ( isset( $wplc_settings['wplc_open_minimized_chat_box'] ) && '1' === $wplc_settings['wplc_open_minimized_chat_box'] ) {
+		$ret_msg .= ' data-chat-popup="true"';
+	}
+	$ret_msg .= '></div>';
 	$ret_msg .= " </div>";
     $ret_msg .= " <div id=\"wp-live-chat-2\" style=\"display:none;\">";
     $ret_msg .= 	apply_filters("wplc_filter_live_chat_box_survey","");
@@ -2110,7 +2114,11 @@ function wplc_theme_control_function($wplc_settings,$logged_in,$wplc_using_local
     $ret_msg .= "<div class=\"wp-live-chat-wraper\">";
     $ret_msg .=   apply_filters("wplc_filter_live_chat_box_html_header_div_top",wplc_filter_control_live_chat_box_html_header_div_top($wplc_settings));
     $ret_msg .= " </div>";
-	$ret_msg .= '<div id="wplc-chat-alert" class="wplc-chat-alert wplc-chat-alert--' . $wplc_settings["wplc_theme"] . '"></div>';
+    $ret_msg .= '<div id="wplc-chat-alert" class="wplc-chat-alert wplc-chat-alert--' . $wplc_settings["wplc_theme"] . '"';
+    if ( isset( $wplc_settings['wplc_open_minimized_chat_box'] ) && '1' === $wplc_settings['wplc_open_minimized_chat_box'] ) {
+        $ret_msg .= ' data-chat-popup="true"';
+    }
+    $ret_msg .= '></div>';
 	$ret_msg .= " <div id=\"wp-live-chat-2\" style=\"display:none;\">";
     $ret_msg .= " <i id=\"wp-live-chat-minimize\" class=\"fa fa-minus wplc-color-bg-1 wplc-color-2\" style=\"display:none;\" ></i>";
     $ret_msg .= " <i id=\"wp-live-chat-close\" class=\"fa fa-times\" style=\"display:none;\" ></i>";
@@ -3767,6 +3775,7 @@ function wplc_head_basic() {
         if (isset($_POST['wplc_enabled_on_mobile'])) { $wplc_data['wplc_enabled_on_mobile'] = esc_attr($_POST['wplc_enabled_on_mobile']); } else {  $wplc_data['wplc_enabled_on_mobile'] = "0"; }
         if (isset($_POST['wplc_display_name'])) { $wplc_data['wplc_display_name'] = esc_attr($_POST['wplc_display_name']); } 
         if (isset($_POST['wplc_display_to_loggedin_only'])) { $wplc_data['wplc_display_to_loggedin_only'] = esc_attr($_POST['wplc_display_to_loggedin_only']); }
+        if (isset($_POST['wplc_open_minimized_chat_box'])) { $wplc_data['wplc_open_minimized_chat_box'] = esc_attr($_POST['wplc_open_minimized_chat_box']); } else {  $wplc_data['wplc_open_minimized_chat_box'] = "0"; }
 
         if (isset($_POST['wplc_redirect_to_thank_you_page'])) { $wplc_data['wplc_redirect_to_thank_you_page'] = esc_attr($_POST['wplc_redirect_to_thank_you_page']); }
         if (isset($_POST['wplc_redirect_thank_you_url'])) { $wplc_data['wplc_redirect_thank_you_url'] = urlencode(str_replace("https:", "", str_replace("http:", "", $_POST['wplc_redirect_thank_you_url']) ) ); }

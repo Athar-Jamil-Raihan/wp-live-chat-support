@@ -464,6 +464,7 @@ jQuery(document).ready(function() {
                     }
                     if(response['data'] != null){ // append messages to chat area
                         if (typeof response['data'] === "object") {
+                            var chatAlert = jQuery('#wplc-chat-alert');
                             for (var index in response['data']) {
                                 wplc_new_message_sound = false;
                                 if(typeof response['data'][index] !== "object"){
@@ -532,7 +533,10 @@ jQuery(document).ready(function() {
 
                                 if(wplc_new_message_sound){
                                     if (response['alert']) {
-                                        jQuery('#wplc-chat-alert').addClass('is-active');
+                                        chatAlert.addClass('is-active');
+                                        if (chatAlert && chatAlert.attr('data-chat-popup')) {
+                                            jQuery("#wp-live-chat-header").trigger('click');
+                                        }
                                     }
                                     var height = jQuery('#wplc_chatbox')[0].scrollHeight;
                                     jQuery('#wplc_chatbox').scrollTop(height);
