@@ -70,12 +70,14 @@ jQuery(document).on("wplc_agent_joined", function(e) {
     var taid = '';
     var ta_tagline = '';
     var ta_bio = '';
+    var ta_social_links = '';
 
     if (typeof e.ndata.other.email !== "undefined") { temail = e.ndata.other.email; }
     if (typeof e.ndata.other.name !== "undefined") { tname = e.ndata.other.name; }
     if (typeof e.ndata.other.aid !== "undefined") { taid = e.ndata.other.aid; }
     if (typeof e.ndata.other.agent_tagline !== "undefined") { ta_tagline = e.ndata.other.agent_tagline; }
     if (typeof e.ndata.other.agent_bio !== "undefined") { ta_bio = e.ndata.other.agent_bio; }
+    if (typeof e.ndata.other.social_links !== "undefined") { ta_social_links = e.ndata.other.social_links; }
 
 
     jQuery(".wplc_no_answer").remove();
@@ -91,7 +93,7 @@ jQuery(document).on("wplc_agent_joined", function(e) {
       jQuery('<p/>', {
         'class': '',
         'style': 'text-align:center;',
-        html: '<img class="img-thumbnail img-circle wplc_thumb32 wplc_agent_involved" style="max-width:inherit;" id="agent_grav_'+taid+'" title="'+tname+'" src="'+timageurl+'?s=40" /><br /><span class="wplc_agent_name wplc-color-2">'+tname+'</span>'+ta_tagline+ta_bio
+        html: '<img class="img-thumbnail img-circle wplc_thumb32 wplc_agent_involved" style="max-width:inherit;" id="agent_grav_'+taid+'" title="'+tname+'" src="'+timageurl+'?s=40" /><br /><span class="wplc_agent_name wplc-color-2">'+tname+'</span>'+ta_tagline+ta_bio+ta_social_links
       }).appendTo('.wplc_agent_info');
     }
     var csst = "url(http://www.gravatar.com/avatar/20a6e5c8b75ce87f4896f46ed6f49832?s=60);";

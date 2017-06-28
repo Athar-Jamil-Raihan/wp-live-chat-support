@@ -3,7 +3,7 @@
   Plugin Name: WP Live Chat Support
   Plugin URI: http://www.wp-livechat.com
   Description: The easiest to use website live chat plugin. Let your visitors chat with you and increase sales conversion rates with WP Live Chat Support. No third party connection required!
-  Version: 7.1.01
+  Version: 7.1.02
   Author: WP-LiveChat
   Author URI: http://www.wp-livechat.com
   Text Domain: wplivechat
@@ -11,6 +11,9 @@
  */
  
 /**
+ * 7.1.02 - 2017-06-21 - Low priority
+ * Fixed a compat issue between pro and basic with regards to the agent social profiles
+ * 
  * 7.1.01 - 2017-06-18 - Low priority
  * Small bug fix for agent profiles
  * 
@@ -549,7 +552,7 @@ global $debug_start;
 $wplc_tblname_offline_msgs = $wpdb->prefix . "wplc_offline_messages";
 $wplc_tblname_chats = $wpdb->prefix . "wplc_chat_sessions";
 $wplc_tblname_msgs = $wpdb->prefix . "wplc_chat_msgs";
-$wplc_version = "7.1.01";
+$wplc_version = "7.1.02";
 
 define('WPLC_BASIC_PLUGIN_DIR', dirname(__FILE__));
 define('WPLC_BASIC_PLUGIN_URL', plugins_url() . "/wp-live-chat-support/");
@@ -1967,9 +1970,9 @@ function wplc_filter_control_live_chat_box_above_main_div( $msg, $wplc_settings,
 	                $agent = 'Admin';
 	            }
 	        }
-	        $cbox_header_bg = "style='background-image:url(http://www.gravatar.com/avatar/".md5($user_info->user_email)."?s=380); no-repeat; cover;'";
+	        $cbox_header_bg = "style='background-image:url(https://www.gravatar.com/avatar/".md5($user_info->user_email)."?s=380); no-repeat; cover;'";
 
-		 	$extra = apply_filters( "wplc_filter_further_live_chat_box_above_main_div", '', $wplc_settings, $cid, $chat_data );
+			$extra = apply_filters( "wplc_filter_further_live_chat_box_above_main_div", '', $wplc_settings, $cid, $chat_data, $agent );
 
 			$agent_string = '
 			<p style="text-align:center;">
@@ -2213,9 +2216,11 @@ function wplc_output_box_ajax_new($cid = null) {
 		            }
 		        }   
 
+		        if( !isset( $data ) ){ $data = false; }
+
 		        $agent_tagline = apply_filters( "wplc_filter_agent_data_agent_tagline", $agent_tagline, $cid, $chat_data, $agent, $wplc_acbc_data, $user_info, $data );          
-		        $agent_bio = apply_filters( "wplc_filter_agent_data_agent_bio", $agent_bio, $cid, $chat_data, $agent, $wplc_acbc_data, $user_info, $data );          
-		        $social_links = apply_filters( "wplc_filter_agent_data_social_links", $social_links, $cid, $chat_data, $agent, $wplc_acbc_data, $user_info, $data);   
+                $agent_bio = apply_filters( "wplc_filter_agent_data_agent_bio", $agent_bio, $cid, $chat_data, $agent, $wplc_acbc_data, $user_info, $data );          
+                $social_links = apply_filters( "wplc_filter_agent_data_social_links", $social_links, $cid, $chat_data, $agent, $wplc_acbc_data, $user_info, $data);
 
 	        	$ret_msg['agent_data'] = array(
 		                'email' => md5($user_info->user_email),

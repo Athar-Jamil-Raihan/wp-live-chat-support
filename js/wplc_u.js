@@ -968,12 +968,14 @@ jQuery(document).ready(function() {
             var taid = '';
             var ta_tagline = '';
             var ta_bio = '';
+            var ta_social_links = '';
 
             if (typeof e.ndata.other.email !== "undefined") { temail = e.ndata.other.email; }
             if (typeof e.ndata.other.name !== "undefined") { tname = e.ndata.other.name; }
             if (typeof e.ndata.other.aid !== "undefined") { taid = e.ndata.other.aid; }
             if (typeof e.ndata.other.agent_tagline !== "undefined") { ta_tagline = e.ndata.other.agent_tagline; }
             if (typeof e.ndata.other.agent_bio !== "undefined") { ta_bio = e.ndata.other.agent_bio; }
+            if (typeof e.ndata.other.social_links !== "undefined") { ta_social_links = e.ndata.other.social_links; }
             wplc_current_agent = e.ndata.other;
 
             jQuery(".wplc_no_answer").remove();
